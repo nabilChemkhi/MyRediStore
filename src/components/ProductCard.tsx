@@ -1,14 +1,23 @@
 import type { Product } from "../types/product";
+import { useState } from "react";
 
 interface ProductCardProps {
   product: Product;
 }
 
 function ProductCard({ product }: ProductCardProps) {
+    const [isFavorite, setIsFavorite] = useState(false);
   return (
     <div className="p-4 bg-white shadow-md rounded-lg border-t-4 border-blue-500
                     hover:shadow-xl hover:-translate-y-1 transition duration-200
                     flex flex-col">
+                        <button
+        onClick={() => setIsFavorite(!isFavorite)}
+        className="absolute top-3 right-3 text-2xl"
+        aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+      >
+        {isFavorite ? "❤️" : "🤍"}
+      </button>
       <span className="self-start text-xs font-semibold uppercase tracking-wide
                        text-white bg-blue-500 px-2 py-0.5 rounded">
         {product.category}
