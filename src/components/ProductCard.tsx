@@ -1,12 +1,14 @@
 import type { Product } from "../types/product";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 interface ProductCardProps {
     product: Product;
 }
 
 function ProductCard({ product }: ProductCardProps) {
     const [isFavorite, setIsFavorite] = useState(false);
+    const { addToCart } = useCart();
     return (
         <div className="relative p-4 bg-white shadow-md rounded-lg border-t-4 border-blue-500
                     hover:shadow-xl hover:-translate-y-1 transition duration-200
@@ -41,7 +43,9 @@ function ProductCard({ product }: ProductCardProps) {
                 ${product.price.toFixed(2)}
             </p>
 
-            <button className="mt-auto pt-2 w-full bg-blue-600 text-white text-sm font-semibold
+            <button 
+            onClick={() => addToCart(product)}
+            className="mt-auto pt-2 w-full bg-blue-600 text-white text-sm font-semibold
                          py-2 rounded hover:bg-blue-700 transition-colors">
                 Add to Cart
             </button>

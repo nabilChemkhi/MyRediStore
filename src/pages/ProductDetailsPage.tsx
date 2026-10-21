@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import type { Product } from "../types/product";
+import { useCart } from "../context/CartContext";
 
 function ProductDetailsPage() {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +55,9 @@ function ProductDetailsPage() {
             ${product.price.toFixed(2)}
           </p>
           <p className="text-gray-600">{product.description}</p>
-          <button className="mt-4 bg-blue-600 text-white font-semibold py-2 rounded
+          <button 
+          onClick={() => addToCart(product)}
+          className="mt-4 bg-blue-600 text-white font-semibold py-2 rounded
                              hover:bg-blue-700 transition-colors">
             Add to Cart
           </button>

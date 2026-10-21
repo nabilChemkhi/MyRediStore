@@ -3,10 +3,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     <BrowserRouter>
+    <CartProvider>
       <Header />
       <main className="p-6 bg-gray-100 min-h-screen">
         <Routes>
@@ -16,6 +18,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      </CartProvider>
     </BrowserRouter>
   );
 }
