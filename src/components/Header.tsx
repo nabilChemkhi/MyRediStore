@@ -9,7 +9,7 @@ function Header() {
       <nav className="flex gap-4">
         <Link to="/" className="hover:underline">Home</Link>
         <Link to="/about" className="hover:underline">About</Link>
-        <span className="font-semibold">🛒 Cart ({cart.length})</span>
+        <Link to="/cart" className="font-semibold hover:underline">🛒 Cart ({cart.length})</Link>
       </nav>
     </header>
   );
