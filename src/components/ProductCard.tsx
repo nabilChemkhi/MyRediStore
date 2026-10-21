@@ -1,6 +1,6 @@
 import type { Product } from "../types/product";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 interface ProductCardProps {
     product: Product;
 }
@@ -8,7 +8,7 @@ interface ProductCardProps {
 function ProductCard({ product }: ProductCardProps) {
     const [isFavorite, setIsFavorite] = useState(false);
     return (
-         <div className="relative p-4 bg-white shadow-md rounded-lg border-t-4 border-blue-500
+        <div className="relative p-4 bg-white shadow-md rounded-lg border-t-4 border-blue-500
                     hover:shadow-xl hover:-translate-y-1 transition duration-200
                     flex flex-col">
             <button
@@ -23,15 +23,19 @@ function ProductCard({ product }: ProductCardProps) {
                 {product.category}
             </span>
 
-            <img
-                src={product.image}
-                alt={product.title}
-                className="h-40 w-full object-contain my-4"
-            />
+            <Link to={`/product/${product.id}`}>
+                <img
+                    src={product.image}
+                    alt={product.title}
+                    className="h-40 w-full object-contain my-4"
+                />
+            </Link>
 
-            <h3 className="text-lg font-bold text-gray-800 line-clamp-2">
-                {product.title}
-            </h3>
+            <Link to={`/product/${product.id}`} className="hover:text-blue-600">
+                <h3 className="text-lg font-bold text-gray-800 line-clamp-2">
+                    {product.title}
+                </h3>
+            </Link>
 
             <p className="text-green-600 font-semibold mt-2">
                 ${product.price.toFixed(2)}
