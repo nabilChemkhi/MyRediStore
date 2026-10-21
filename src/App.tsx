@@ -9,12 +9,12 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchProducts() {
+  async function fetchProducts() {
       try {
         const res = await fetch("https://fakestoreapi.com/products");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data: Product[] = await res.json();
+        console.log("Fetched products:");
         setProducts(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
@@ -23,6 +23,9 @@ function App() {
       }
     }
 
+
+  useEffect(() => {
+    
     fetchProducts();
   }, []);
 
