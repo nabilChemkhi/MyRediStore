@@ -8,7 +8,7 @@ function Header() {
       <Link to="/" className="text-2xl font-bold">Nabil's Store</Link>
       <nav className="flex gap-4">
         <Link to="/" className="hover:underline">Home</Link>
-        <Link to="/about" className="hover:underline">About</Link>
+        {/* <Link to="/about" className="hover:underline">About</Link> */}
         <Link to="/cart" className="font-semibold hover:underline">🛒 Cart ({cart.length})</Link>
       </nav>
     </header>

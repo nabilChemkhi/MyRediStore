@@ -5,11 +5,13 @@ import HomePage from "./pages/HomePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import { CartProvider } from "./context/CartContext";
 import CartPage from "./pages/CartPage";
+import { FavoritesProvider } from "./context/FavoritesContext";
 
 function App() {
   return (
     <BrowserRouter>
     <CartProvider>
+      <FavoritesProvider>
       <Header />
       <main className="p-6 bg-gray-100 min-h-screen">
         <Routes>
@@ -20,6 +22,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      </FavoritesProvider>
       </CartProvider>
     </BrowserRouter>
   );
